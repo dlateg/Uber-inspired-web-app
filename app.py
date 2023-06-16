@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-   vehicles = jsonify(get_drivers())
+   vehicles = get_drivers()
    return render_template('map.html', vehicles=vehicles)
 
 app.static_folder = 'static'
