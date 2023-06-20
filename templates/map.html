@@ -10,8 +10,8 @@
 </head>
 <body>
     <div id="map"></div>
-    <input type="hidden" id="vehicles-data" value="{{ vehicles|tojson }}">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Cf2O2BHTfWg05DbaJAd-4vkUPrSlLsk&callback=initMap" async defer></script>
+    <input type="hidden" id="vehicles-data" value={{ vehicles|safe}}>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Cf2O2BHTfWg05DbaJAd-4vkUPrSlLsk&callback=loadMap" async defer></script>
     <script src="{{ url_for('static', filename='map.js') }}"></script>
 </body>
 </html>
