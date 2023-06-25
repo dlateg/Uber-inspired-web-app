@@ -1,31 +1,44 @@
+
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
+        zoom: 12,
         center: {lat: 51.5195786, lng: -0.0606907}
     });
 
     // Get the vehicles data from the hidden input field
-    var vehicles = document.getElementById('vehicles-data').value;
-    var vehicles = JSON.parse(vehicles);
+    var vehiclesData = document.getElementById('vehicles-data').value;
 
-    // Array to store markers
-    var markers = [];
-    const image = "https://apollo-media.codio.co.uk/media%2F1%2F9a9ed3e3e1ee96baf9da3e47d4570c5c-0e41f5b92e883928.webp";
+    try {
+        
+        var locations = JSON.parse(vehiclesData);
 
-    for (var i = 0; i < vehicles.length; i++) {
-        var vehicle = vehicles[i];
-        var marker = new google.maps.Marker({
-            position: {lat: vehicle.latitude, lng: vehicle.longitude},
-            map: map,
-            icon: image
-        });
-
-        // Store the marker in the array
-        markers.push(marker);
+    } catch (error) {
+        console.error('Error parsing JSON data:', error.message);
     }
-}
 
-// Call the initMap function when the Google Maps script is loaded
+    const image = 'static/img/car.png';
+    var marker;                                                             
+
+
+    locations.forEach(location => {
+        const latitude = parseFloat(location.latitude);
+        const longitude = parseFloat(location.longitude);
+        const vehicle_id = location.vehicle_id;
+    
+    
+        // Use latitude, longitude, and vehicle_id to create a Google Maps marker
+         marker = new google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map: map,
+            icon: image,
+            title: vehicle_id
+        });
+    });
+    }
+
+
+
+   // Call the initMap function when the Google Maps script is loaded
 function loadMap() {
     initMap();
 }

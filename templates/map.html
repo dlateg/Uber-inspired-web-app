@@ -3,15 +3,19 @@
 <head>
     <title>Vehicle Map</title>
     <style>
-        #map {
+         #map {
             height: 100vh;
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body>
     <div id="map"></div>
-    <input type="hidden" id="vehicles-data" value={{ vehicles|safe}}>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Cf2O2BHTfWg05DbaJAd-4vkUPrSlLsk&callback=loadMap" async defer></script>
+    <input type="hidden" id="vehicles-data" value='{{vehicles}}'>
     <script src="{{ url_for('static', filename='map.js') }}"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Cf2O2BHTfWg05DbaJAd-4vkUPrSlLsk&callback=loadMap" async defer></script> 
+    
 </body>
 </html>

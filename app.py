@@ -15,9 +15,9 @@ app = Flask(__name__)
 def home():
    
    vehicle_list = db.get_drivers()
-   return vehicle_list
-   
+   #print(vehicle_list)
    return render_template('map.html', vehicles = vehicle_list)
+
    
 
 app.static_folder = 'static'
