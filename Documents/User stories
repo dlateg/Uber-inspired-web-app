@@ -1,0 +1,21 @@
+As a rider I want the login page to give the option to register 
+As a rider, I want the my registration details to be captured and saved user to database
+As a rider, I want to see the map on the page
+As rider, I want to see the available cars on the map
+As a rider, I want the the applicatin to detect my location and suggest locations
+As a rider, I want to save locations and routes to favourites 
+As a rider, I want to see my saved favourites
+As rider, I want to see drivers name and licence 
+As a rider, I want the drivers ratings to be displayed
+As a rider, I want the option to choose the cab style 
+As rider/driver I want the total to be displayed on the screen
+As a rider, I want  different payment options to be offered
+As a rider, I want my payment details to be saved for future use
+As a driver, I wnat to be notified of a new booking request 
+As a driver, I want the option to cancel or accept
+As a rider , I want to see the riders details and location
+As a driver, I want to be notified to rate a rider 
+As a driver, I want to rate rider and submit rating 
+As a rider, I want to be notified to rate a driver
+As a rider, I want to rate driver and submit rating 
+As a regular user, I want to be able to save all the necessary details in the application so that I don’t have to type out everything every time I use one of my regular routes.
