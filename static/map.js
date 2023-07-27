@@ -1,5 +1,8 @@
+//code adapted from google documentation 
+let map;
 
-function initMap() {
+async function initMap() {
+    const { Map } = await google.maps.importLibrary("maps");
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: {lat: 51.5195786, lng: -0.0606907}
@@ -15,6 +18,8 @@ function initMap() {
     } catch (error) {
         console.error('Error parsing JSON data:', error.message);
     }
+
+    console.log(locations);
 
     const image = 'static/img/car.png';
     var marker;                                                             
@@ -37,8 +42,4 @@ function initMap() {
     }
 
 
-
-   // Call the initMap function when the Google Maps script is loaded
-function loadMap() {
-    initMap();
-}
+initMap();
