@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your booked cab</title>
+    <style>
+        #map {
+           height: 100vh;
+       }
+
+       /* Style for the modal */
+       #driverModal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Style for the modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+   </style>
+   
+   <script>
+    (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+      key: "{{ api_key }}",
+      v: "weekly",
+      // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+      // Add other bootstrap parameters as needed, using camel case.
+    });
+    
+  </script>
+
+<script>
+
+    // Function to open the modal
+    function openModal() {
+        document.getElementById('driverModal').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('driverModal').style.display = 'none';
+    }
+</script>
+
+</head>
+<body>
+    <!-- Modal -->
+    <div id="driverModal">
+        <div class="modal-content">
+            <h2>Nearest Driver</h2>
+            <p>Driver ID: <span id="driverID"></span></p>
+            <p>Latitude: <span id="driverLatitude"></span></p>
+            <p>Longitude: <span id="driverLongitude"></span></p>
+            <!-- Close modal button -->
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+
+    <input type="hidden" id="nearest_driver" value='{{nearest_driver|tojson}}'>
+    <div id="map"></div>
+    <div id="directionsPanel" style="display: none;"></div>
+
+
+    <script>
+        var latitude = {{ latitude }};
+        var longitude = {{ longitude }};
+    </script>
+    <script src="{{ url_for('static', filename='book.js') }}"></script>
+    
+</body>
+</html>

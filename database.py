@@ -2,6 +2,7 @@ import json
 from typing import Optional
 from cars import initial_db_state
 from sqlmodel import Field, Session, SQLModel, create_engine, select
+from flask import Blueprint
 
 
 class Driver(SQLModel, table=True):

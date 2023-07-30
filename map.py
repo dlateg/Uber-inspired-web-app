@@ -1,27 +1,15 @@
-from flask import Flask, jsonify
-#from dotenv import load_dotenv
-#from database import get_drivers
-from flask import Flask, render_template
+from flask import Blueprint, render_template
 import database as db
-import json
-from main import app
+from config import GOOGLE_MAPS_API_KEY
+#from main import app
 
-
-# #load_dotenv()
-
-# app = Flask(__name__)
+app = Blueprint('map', __name__)
 
 
 @app.route("/")
 def home():
    
    vehicle_list = db.get_drivers()
-   #print(vehicle_list)
-   return render_template('map.html', vehicles = vehicle_list)
+   return render_template('map.html', vehicles = vehicle_list,api_key=GOOGLE_MAPS_API_KEY)
 
    
-
-# app.static_folder = 'static'
-
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=5000)

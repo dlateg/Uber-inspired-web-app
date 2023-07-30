@@ -1,4 +1,24 @@
 //code adapted from google documentation 
+document.getElementById('showFormButton').addEventListener('click', function () {
+    // Hide the map
+    document.getElementById('map').style.display = 'none';
+    document.getElementById('showFormButton').style.display = 'none';
+
+    // Show the form
+    document.getElementById('form-container').style.display = 'block';
+    document.getElementById('showMapButton').style.display = 'block';
+});
+
+document.getElementById('showMapButton').addEventListener('click', function () {
+    // show the map
+    document.getElementById('map').style.display = 'block';
+    document.getElementById('showFormButton').style.display = 'block';
+
+    // hide the form
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('showMapButton').style.display = 'none';
+});
+
 let map;
 
 async function initMap() {
@@ -19,7 +39,6 @@ async function initMap() {
         console.error('Error parsing JSON data:', error.message);
     }
 
-    console.log(locations);
 
     const image = 'static/img/car.png';
     var marker;                                                             
@@ -42,4 +61,4 @@ async function initMap() {
     }
 
 
-initMap();
+    initMap();

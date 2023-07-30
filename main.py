@@ -3,7 +3,6 @@ from flask import Flask
 app = Flask(__name__)
 
 #blueprint idea inspired from chatgpt
-
 from map import app as map_app
 app.register_blueprint(map_app)
 

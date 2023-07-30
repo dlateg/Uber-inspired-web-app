@@ -1,21 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+
+
     <title>Vehicle Map</title>
     <style>
          #map {
-            height: 100vh;
+            height: 80vh;
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body>
-    <div id="map"></div>
+  <div class="container">
+    <!-- Display the map -->
+    <div id="map" style="display: block;"></div>
+
+    <!-- Display the form (initially hidden) -->
+    <div id="form-container" style="display: none;">
+        <form id="bookingForm" action="{{url_for('bookHandler.findmeataxi')}}" method="post">
+            <label for="latitude">Enter pickup latitude:</label><br>
+            <input type="text" id="latitude" name="latitude"><br><br>
+            <label for="longitude">Enter pickup longitude:</label><br>
+            <input type="text" id="longitude" name="longitude"><br><br>
+            <input type="submit" value="Submit" id="submitButton">
+        </form>
+    </div>
+    <div id="bookButtonContainer" style="display: none;">
+        <button id="bookButton">Book</button>
+    </div>
+    </div>
+    
+    <!-- Toggle between map and form using buttons -->
+    <button id="showMapButton" style="display: none;">Show Map</button>
+    <button id="showFormButton">Book</button>
+        
+    <div id="directions-panel"></div>
+    
+
     <input type="hidden" id="vehicles-data" value='{{vehicles}}'>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap" 
+        async defer></script>
     <script src="{{ url_for('static', filename='map.js') }}"></script>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Cf2O2BHTfWg05DbaJAd-4vkUPrSlLsk&callback=loadMap" async defer></script> 
-    
+
+    <!-- Modal to display JSON response -->
+  <div class="modal fade" id="jsonModal" tabindex="-1" role="dialog" aria-labelledby="jsonModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="jsonModalLabel">JSON Response</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="jsonModalBody">
+          <!-- JSON response content will be displayed here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
