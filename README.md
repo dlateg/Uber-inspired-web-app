@@ -7,5 +7,5 @@ Steps for running:
 2. Clone this repository into your local
 3. Install the required modules if necessary using pip (e.g pip install flask, pip install sqllite)
 4. Run the app using command - > set FLASK_APP=main then
-> flask run
+- > flask run
 5. Browse to http://127.0.0.1:5000/ 
