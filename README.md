@@ -9,3 +9,8 @@ Steps for running:
 4. Install the required modules if necessary using pip (e.g pip install flask, pip install sqllite)
 5. Run the app using command - > python main.py
 6. Browse to http://127.0.0.1:5000/ 
+
+#Demo of the app 
+
+https://github.com/dlateg/Uber-inspired-web-app/assets/88791956/60e19815-a175-46d7-82e1-4bb21ed4c8e5
+
